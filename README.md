@@ -1,226 +1,83 @@
-# Amr Etman — Portfolio
+# Amr Etman
 
-A minimal, bilingual (EN / AR) portfolio website built as a static site with zero build steps and zero frameworks. Designed with a **calm technical editorial** aesthetic — generous whitespace, typographic hierarchy, thin borders, and quiet shadows.
+### Computer Science Student · Aspiring Data Engineer
 
-> Works from `file://` protocol. Open `index.html` in any browser to preview locally.
+> I build practical data workflows that turn raw, scattered information into clean, structured data ready for analysis.
 
----
-
-## Tech Stack
-
-| Layer | Detail |
-|-------|--------|
-| **Markup** | Semantic HTML5 |
-| **Styling** | Custom CSS with design tokens, CSS logical properties for RTL, `prefers-reduced-motion` support |
-| **Scripts** | Vanilla ES2020 classic scripts (globals under `window.Site`) — no bundler, no framework |
-| **Fonts** | Inter (body), Fraunces (headings), IBM Plex Mono (code / labels) |
-| **i18n** | English + Arabic, driven by `js/i18n.js` and bilingual strings in `data.js` |
-| **Accent** | `#3B82F6` (light) / `#60A5FA` (dark) |
+**[Explore my portfolio](https://amr-portfolio-eight.vercel.app/)** · **[Email me](mailto:amretman1213@gmail.com)** · **[GitHub](https://github.com/amretman77)** · **[LinkedIn](https://www.linkedin.com/in/amr-etman-71ba963a6/)**
 
 ---
 
-## File Structure
+## About me
 
-```
-.
-├── index.html              # Home / landing page
-├── projects/
-│   └── index.html          # Projects listing
-├── blog/
-│   ├── index.html          # Blog listing
-│   └── _template.html      # Reusable post template
-├── css/
-│   ├── tokens.css          # Design tokens (colors, spacing, type scale)
-│   ├── base.css            # Resets, global styles
-│   └── components.css      # Reusable component styles
-├── js/
-│   ├── data-loader.js      # Loads & validates data.js
-│   ├── render.js           # DOM rendering helpers
-│   ├── ui.js               # Theme toggle, mobile nav, scroll
-│   ├── i18n.js             # Language switching logic
-│   └── hero-visual.js      # Animated agent-trace terminal
-├── data.js                 # All personal data lives here
-├── assets/
-│   ├── favicon.svg         # SVG favicon (initials)
-│   └── og-image.png        # 1200×630 social preview image
-├── cv/
-│   └── README.md           # Where to place your CV PDF
-├── sitemap.xml
-├── robots.txt
-├── .gitignore               # Editor files, local secrets, and build artifacts
-└── README.md               # ← You are here
-```
+I'm a Computer Science student at the **Faculty of Computers and Data Science, Alexandria University**, in Egypt. I'm focused on data engineering: the systems and workflows that collect, validate, transform, and organize data so it can be used with confidence.
 
----
+I work with Python and SQL, and have hands-on experience with data cleaning, analytical workflows, relational database design, and ETL pipelines. I enjoy learning by building projects and exploring how tools across the data ecosystem fit together. My goal is to grow into a data engineer who can design and maintain reliable, scalable workflows from ingestion through storage and analytics.
 
-## Editing Your Data
+I'm open to **data engineering internship opportunities** and collaboration on data projects.
 
-All personal information is stored in **`data.js`**, which assigns `window.SITE_DATA`. No personal strings are hardcoded in HTML, CSS, or JS. The file is loaded with a normal `<script>` tag (not a module), so the site also works when opened directly from `file://`.
+## Areas of focus
 
-Any user-facing text can be either a plain string or a bilingual object:
+- **Data pipelines:** ETL workflows for data ingestion, transformation, and loading
+- **Data processing:** Cleaning, validating, and transforming datasets with Python and Pandas
+- **SQL and databases:** Relational data, queries, data modeling, and analytical workflows
+- **Big data:** Exploring distributed systems and tools including Spark, Hadoop, Kafka, and Airflow
 
-```js
-name: "Your Name"                       // shown in every language
-name: { en: "Your Name", ar: "اسمك" }   // translated
-```
+## Skills and tools
 
-Leave any value as `""` (or an empty array) to hide the related UI — e.g. an empty `links.linkedin` removes the LinkedIn icon, and an empty `blog: []` removes the Writing section and its nav item.
+| Area | Technologies and concepts |
+| --- | --- |
+| Programming and processing | Python, Pandas, NumPy |
+| Databases | SQL, MySQL, PostgreSQL, database design |
+| Data engineering | ETL, data cleaning, validation, transformation, modeling, CSV, Parquet |
+| Tools and workflow | Git, GitHub, Linux, Docker |
+| Big data ecosystem | Apache Hadoop, Hive, Spark, Kafka, Airflow, HBase, ZooKeeper |
 
-### Schema overview
+I'm continuing to deepen my knowledge of distributed data processing, orchestration, and data infrastructure.
 
-```js
-window.SITE_DATA = {
-  site:    { url, language, ogImage },
-  theme:   { accent, accentDark, defaultMode },     // defaultMode: system | light | dark
-  i18n:    { enabled, languages: ["en", "ar"] },
-  profile: {
-    name, initials, role, tagline, bio,
-    aboutHtml: [ "<p>…</p>", "<p>…</p>" ],          // allowlist: p, strong, em, a, br, code
-    photo, location,
-    availability: { show: true, text },
-    email, phone
-  },
-  links: { github, linkedin, twitter, kaggle, medium, youtube, website },
-  cv:    { file, label },
-  hero:  { stats: [ { value, label } ], traceLines: [ "→ …", "✓ …" ] },
-  now:   { building, learning, reading },
-  focusAreas: [ { icon, title, text } ],
-  skills: {
-    groups: [ { title, items: ["Python", "SQL"] } ],
-    learning: { en: ["Apache Spark"], ar: ["Apache Spark"] }
-  },
-  projects:  [ /* see below */ ],
-  research:  { items: [ { title, status, text } ], cta: { title, text } },
-  experience: [ { title, org, period, current, badges, bullets } ],
-  education:  [ { title, org, period, current, badges, bullets } ],
-  courses:    [ { title, org, period, link } ],
-  blog:       [ /* see below */ ],
-  contact:    { intro, formEndpoint, responseTime },
-  footer:     { text }
-};
-```
+## Selected projects
 
-`data-loader.js` validates the shape, strips empty/malformed items and logs readable `console.warn`s for missing or misspelled keys — it never throws.
+### Olist Data Engineering Project
+
+An ETL workflow for the Brazilian Olist e-commerce dataset. The project processes raw CSV data with Python and Pandas, cleans and validates it, transforms it into structured Parquet files, and loads it into MySQL for downstream analytics.
+
+**Tools:** Python · Pandas · MySQL · SQL · Parquet · Git  
+**[View the source on GitHub](https://github.com/amretman77/depi-project)**
+
+### FIFA Player Market Value ML Pipeline
+
+An end-to-end machine learning project using FIFA player data to explore player attributes, prepare features, and predict market values with regression models.
+
+**Tools:** Python · Pandas · NumPy · scikit-learn  
+**[View the source on GitHub](https://github.com/amretman77/FIFA-Player-Market-Value-ML-Pipeline)**
+
+## Education
+
+**Bachelor's degree in Computer Science**  
+Faculty of Computers and Data Science, Alexandria University · 2024–2028
+
+My studies include data analysis, machine learning, database systems, SQL, programming, and computer science fundamentals.
+
+## Training
+
+**Big Data Analytics Training — ITIDA / NTI** · August–September 2026  
+Completed a 120-hour program, including 90 hours of technical training and 30 hours focused on freelancing fundamentals. The training covered Python, SQL, data analysis, and introductory big data concepts. **Overall score: 88%.**
+
+## Research interests
+
+- Data infrastructure and distributed systems
+- Data quality, validation, and pipeline reliability
+- Applications of AI in data processing and engineering
+
+## Get in touch
+
+I welcome conversations about data engineering internships, project collaboration, and practical data workflows.
+
+- **Portfolio:** [amr-portfolio-eight.vercel.app](https://amr-portfolio-eight.vercel.app/)
+- **Email:** [amretman1213@gmail.com](mailto:amretman1213@gmail.com)
+- **GitHub:** [amretman77](https://github.com/amretman77)
+- **LinkedIn:** [Amr Etman](https://www.linkedin.com/in/amr-etman-71ba963a6/)
 
 ---
 
-## Adding a Project
-
-Add an entry to the `projects` array in `data.js`:
-
-```js
-{
-  id: "project-slug",
-  title: { en: "Project Name", ar: "اسم المشروع" },
-  summary: { en: "One-liner.", ar: "وصف مختصر." },
-  description: { en: "Longer overview…", ar: "نظرة أطول…" },
-  category: { en: "Data Engineering", ar: "هندسة البيانات" },
-  status: "Completed",                 // Completed | In Progress | Archived
-  featured: true,                      // featured projects sort first
-  date: "2026-01",                     // YYYY-MM
-  role: { en: "Data Engineer", ar: "مهندس بيانات" },
-  highlights: [ { en: "…", ar: "…" }, { en: "…", ar: "…" } ],
-  tech: ["Python", "MySQL", "Parquet"],
-  problem:  { en: "…", ar: "…" },
-  approach: { en: "…", ar: "…" },
-  result:   { en: "…", ar: "…" },
-  links: { github: "https://…", demo: "", caseStudy: "" }
-}
-```
-
-- `featured: true` projects are shown first on the home page (up to 6).
-- Category and technology filters are generated automatically from the data.
-- Empty `links.*` values hide their buttons.
-
----
-
-## Adding a Blog Post
-
-1. Add an entry to the `blog` array in `data.js`:
-
-```js
-{
-  title: { en: "Post title", ar: "عنوان المقال" },
-  date: "2026-11-20",
-  category: { en: "Data Engineering", ar: "هندسة البيانات" },
-  tags: ["ETL", "Python"],
-  readingTime: { en: "7 min", ar: "7 دقائق" },
-  summary: { en: "Brief excerpt.", ar: "مقتطف مختصر." },
-  link: "blog/my-post.html"            // required
-}
-```
-
-2. Copy `blog/_template.html` to `blog/my-post.html`.
-3. Replace the title, date, description and body in the new file. The table of contents, reading-progress bar and code-copy buttons are automatic.
-4. The post supports two language blocks (`data-lang-content="en"` / `"ar"`); the nav language switch toggles them.
-
-Once at least one post exists, the Writing section and its nav item appear automatically on the home page and the blog archive.
-
----
-
-## Replacing CV, Photo, and OG Image
-
-| Asset | Location | Config |
-|-------|----------|--------|
-| **CV PDF** | `cv/Amr_Mostafa_CV.pdf` | Set `cv.file` in `data.js` (relative path, no leading `/`) |
-| **Profile photo** | `assets/photo.webp` | Set `profile.photo` in `data.js`; leave `""` to hide |
-| **OG image** | `assets/og-image.png` | Set `site.ogImage` in `data.js` — recommended size: 1200×630 px |
-
----
-
-## Enabling / Configuring Arabic
-
-Arabic is enabled out of the box. The language switcher in the navigation reads `i18n.js` and toggles `<html lang="..." dir="...">`.
-
-- All CSS uses **logical properties** (`margin-inline-start`, `padding-block`, `border-inline-end`, etc.) so layouts flip automatically in RTL.
-- To add or modify Arabic strings, edit the `ar` key in every bilingual object inside `data.js`.
-- The first language in `i18n.languages` is the default; the visitor's choice is remembered in `localStorage`. Set `i18n.enabled` to `false` to force English only.
-
----
-
-## Deployment
-
-### Vercel
-
-1. Push the repo to GitHub.
-2. Import the repo at [vercel.com/new](https://vercel.com/new).
-3. Framework Preset: **Other**.
-4. Build Command: leave empty (no build step).
-5. Output Directory: `.` (root).
-6. Deploy.
-
-### GitHub Pages
-
-1. Push the repo to GitHub.
-2. Go to **Settings → Pages**.
-3. Source: **Deploy from a branch**.
-4. Branch: `main`, folder: `/ (root)`.
-5. Save — the site will be live at `https://<username>.github.io/<repo>/`.
-
-### Netlify
-
-1. Push the repo to GitHub.
-2. Import the repo at [app.netlify.com](https://app.netlify.com).
-3. Build Command: leave empty.
-4. Publish Directory: `.`.
-5. Deploy.
-
-> After deploying, replace `YOUR-DOMAIN.example` in `sitemap.xml`, `robots.txt`, `data.js` (`site.url`) and the static meta fallbacks in the HTML pages with your real domain. Regenerate `assets/og-image.png` if you change your name or role.
-
----
-
-## SEO Checklist
-
-- [ ] Replace `YOUR-DOMAIN.example` with your real domain in `sitemap.xml`, `robots.txt`, and `data.js`.
-- [ ] Create a 1200×630 px OG image and set `data.meta.ogImage`.
-- [ ] Verify your site in [Google Search Console](https://search.google.com/search-console) and submit `sitemap.xml`.
-- [ ] Ensure `meta.title` and `meta.description` are filled in `data.js` for both languages.
-- [ ] Add a canonical `<link>` if you serve from multiple domains.
-- [ ] Test with [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) and [Twitter Card Validator](https://cards-dev.twitter.com/validator).
-- [ ] Run [Lighthouse](https://developer.chrome.com/docs/lighthouse/) — aim for 95+ on Performance, Accessibility, Best Practices, and SEO.
-
----
-
-## License
-
-© Amr Etman. All rights reserved.
+<p align="center"><sub>Based in Egypt · Always learning, building, and improving</sub></p>

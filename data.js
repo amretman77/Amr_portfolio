@@ -84,11 +84,11 @@ window.SITE_DATA = {
   },
 
   /* ---------- Hero section ---------- */
-  hero: {
+hero: {
     stats: [
-      { value: "88%", label: { en: "Training Score", ar: "درجة التدريب" } },
-      { value: "120 Hrs", label: { en: "Training", ar: "ساعات التدريب" } },
-      { value: "3.05", label: { en: "GPA", ar: "المعدل التراكمي" } }
+      { value: "", label: { en: "", ar: "" } },
+      { value: "", label: { en: "", ar: "" } },
+      { value: "", label: { en: "", ar: "" } }
     ],
     traceLines: [
       "→ extract(source=\"olist_raw\", format=\"csv\")",

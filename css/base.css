@@ -1,0 +1,869 @@
+/* ==========================================================================
+   base.css — Reset · Typography · Layout Primitives · Utilities · Print
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. Color-scheme
+   -------------------------------------------------------------------------- */
+:root {
+  color-scheme: light dark;
+}
+
+/* --------------------------------------------------------------------------
+   1. Modern CSS Reset
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  hanging-punctuation: first last;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  line-height: var(--leading-normal, 1.6);
+  font-family: var(--ff-body, 'Inter', system-ui, -apple-system, sans-serif);
+  font-size: var(--fs-body, 1rem);
+  font-weight: var(--fw-normal, 400);
+  color: var(--clr-text, #1a1a1a);
+  background-color: var(--clr-surface, #faf9f6);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Remove default list styling */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Reset anchors */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Reset buttons and inputs */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Reset table */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Reset fieldset */
+fieldset {
+  border: none;
+}
+
+/* --------------------------------------------------------------------------
+   2. Media defaults
+   -------------------------------------------------------------------------- */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+img {
+  font-style: italic; /* alt text styling */
+}
+
+/* --------------------------------------------------------------------------
+   3. Typography — Fluid Type Scale
+   -------------------------------------------------------------------------- */
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ff-heading, 'Fraunces', Georgia, serif);
+  font-weight: var(--fw-bold, 700);
+  line-height: var(--leading-tight, 1.15);
+  color: var(--clr-heading, var(--clr-text));
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-h1, clamp(2.25rem, 1.5rem + 3vw, 3.75rem));
+  letter-spacing: var(--ls-tight, -0.025em);
+  font-weight: var(--fw-black, 900);
+}
+
+h2 {
+  font-size: var(--fs-h2, clamp(1.75rem, 1.25rem + 2vw, 2.75rem));
+  letter-spacing: var(--ls-tight, -0.025em);
+}
+
+h3 {
+  font-size: var(--fs-h3, clamp(1.375rem, 1rem + 1.5vw, 2rem));
+  letter-spacing: var(--ls-snug, -0.015em);
+}
+
+h4 {
+  font-size: var(--fs-h4, clamp(1.125rem, 0.9rem + 1vw, 1.5rem));
+}
+
+h5 {
+  font-size: var(--fs-h5, clamp(1rem, 0.85rem + 0.6vw, 1.25rem));
+}
+
+h6 {
+  font-size: var(--fs-h6, clamp(0.875rem, 0.8rem + 0.4vw, 1.125rem));
+  font-weight: var(--fw-semibold, 600);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide, 0.05em);
+}
+
+/* Body text */
+p {
+  max-inline-size: var(--measure, 65ch);
+  text-wrap: pretty;
+}
+
+/* Small / captions */
+small,
+.text-sm {
+  font-size: var(--fs-sm, clamp(0.8rem, 0.75rem + 0.2vw, 0.875rem));
+}
+
+.text-xs {
+  font-size: var(--fs-xs, clamp(0.7rem, 0.65rem + 0.2vw, 0.75rem));
+}
+
+.text-lg {
+  font-size: var(--fs-lg, clamp(1.05rem, 0.95rem + 0.5vw, 1.2rem));
+}
+
+/* Lead / intro paragraph */
+.text-lead {
+  font-size: var(--fs-lead, clamp(1.1rem, 1rem + 0.5vw, 1.35rem));
+  line-height: var(--leading-relaxed, 1.75);
+  color: var(--clr-text-muted, #555);
+  max-inline-size: var(--measure, 65ch);
+}
+
+/* Strong / emphasis */
+strong,
+b {
+  font-weight: var(--fw-semibold, 600);
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   4. Code & Pre
+   -------------------------------------------------------------------------- */
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--ff-mono, 'IBM Plex Mono', 'Fira Code', monospace);
+  font-size: var(--fs-code, 0.875em);
+}
+
+code {
+  padding-inline: 0.3em;
+  padding-block: 0.15em;
+  background-color: var(--clr-code-bg, rgba(0, 0, 0, 0.06));
+  border-radius: var(--radius-sm, 0.25rem);
+  color: var(--clr-code-text, var(--clr-text));
+}
+
+pre {
+  padding-inline: var(--space-md, 1.5rem);
+  padding-block: var(--space-sm, 1rem);
+  overflow-x: auto;
+  background-color: var(--clr-pre-bg, #1e1e2e);
+  color: var(--clr-pre-text, #cdd6f4);
+  border-radius: var(--radius-md, 0.5rem);
+  border: 1px solid var(--clr-border, rgba(0, 0, 0, 0.08));
+  line-height: var(--leading-relaxed, 1.75);
+  tab-size: 2;
+  -moz-tab-size: 2;
+}
+
+pre code {
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+kbd {
+  padding-inline: 0.4em;
+  padding-block: 0.15em;
+  background-color: var(--clr-kbd-bg, rgba(0, 0, 0, 0.08));
+  border: 1px solid var(--clr-border, rgba(0, 0, 0, 0.12));
+  border-radius: var(--radius-sm, 0.25rem);
+  box-shadow: 0 1px 0 var(--clr-border, rgba(0, 0, 0, 0.12));
+  font-size: 0.85em;
+}
+
+/* --------------------------------------------------------------------------
+   5. Links
+   -------------------------------------------------------------------------- */
+a:not([class]) {
+  color: var(--clr-accent, #3B82F6);
+  text-decoration-line: underline;
+  text-decoration-color: var(--clr-accent-subtle, rgba(59, 130, 246, 0.3));
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+}
+
+a:not([class]):hover {
+  color: var(--clr-accent-hover, #2563EB);
+  text-decoration-color: var(--clr-accent-hover, #2563EB);
+}
+
+a:not([class]):active {
+  color: var(--clr-accent-active, #1D4ED8);
+}
+
+/* --------------------------------------------------------------------------
+   6. Selection
+   -------------------------------------------------------------------------- */
+::selection {
+  background-color: var(--clr-selection-bg, rgba(59, 130, 246, 0.2));
+  color: var(--clr-selection-text, inherit);
+}
+
+::-moz-selection {
+  background-color: var(--clr-selection-bg, rgba(59, 130, 246, 0.2));
+  color: var(--clr-selection-text, inherit);
+}
+
+/* --------------------------------------------------------------------------
+   7. Focus-visible ring
+   -------------------------------------------------------------------------- */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--clr-accent, #3B82F6);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm, 0.25rem);
+}
+
+/* --------------------------------------------------------------------------
+   8. Skip-to-content link
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 9999;
+  padding-inline: var(--space-sm, 1rem);
+  padding-block: var(--space-xs, 0.5rem);
+  background-color: var(--clr-accent, #3B82F6);
+  color: #fff;
+  font-family: var(--ff-mono, 'IBM Plex Mono', monospace);
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: var(--fw-semibold, 600);
+  text-decoration: none;
+  border-end-end-radius: var(--radius-md, 0.5rem);
+  transform: translateY(-100%);
+  transition: transform 200ms ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+}
+
+/* --------------------------------------------------------------------------
+   9. Layout Primitives
+   -------------------------------------------------------------------------- */
+
+/* Container */
+.container {
+  --_container-max: var(--container-max, 70rem); /* 1120px */
+  inline-size: min(100% - var(--space-gutter, 2rem) * 2, var(--_container-max));
+  margin-inline: auto;
+}
+
+.container--narrow {
+  --container-max: 50rem; /* ~800px */
+}
+
+.container--wide {
+  --container-max: 85rem; /* ~1360px */
+}
+
+/* 12-column CSS Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols, 12), 1fr);
+  gap: var(--grid-gap, var(--space-md, 1.5rem));
+}
+
+.grid--auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--grid-min, 18rem)), 1fr));
+}
+
+.grid--auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--grid-min, 18rem)), 1fr));
+}
+
+/* Grid span helpers */
+.col-span-1  { grid-column: span 1; }
+.col-span-2  { grid-column: span 2; }
+.col-span-3  { grid-column: span 3; }
+.col-span-4  { grid-column: span 4; }
+.col-span-5  { grid-column: span 5; }
+.col-span-6  { grid-column: span 6; }
+.col-span-7  { grid-column: span 7; }
+.col-span-8  { grid-column: span 8; }
+.col-span-9  { grid-column: span 9; }
+.col-span-10 { grid-column: span 10; }
+.col-span-11 { grid-column: span 11; }
+.col-span-12 { grid-column: span 12; }
+.col-full    { grid-column: 1 / -1; }
+
+@media (max-width: 48em) {
+  .col-span-1,
+  .col-span-2,
+  .col-span-3,
+  .col-span-4,
+  .col-span-5,
+  .col-span-6,
+  .col-span-7,
+  .col-span-8,
+  .col-span-9,
+  .col-span-10,
+  .col-span-11,
+  .col-span-12 {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 48em) and (max-width: 64em) {
+  .md\:col-span-6  { grid-column: span 6; }
+  .md\:col-span-4  { grid-column: span 4; }
+  .md\:col-span-8  { grid-column: span 8; }
+  .md\:col-span-3  { grid-column: span 3; }
+  .md\:col-span-9  { grid-column: span 9; }
+  .md\:col-span-12 { grid-column: span 12; }
+  .md\:col-full    { grid-column: 1 / -1; }
+}
+
+/* Flow — vertical rhythm */
+.flow > * + * {
+  margin-block-start: var(--flow-space, var(--space-md, 1.5rem));
+}
+
+.flow--sm > * + * {
+  --flow-space: var(--space-xs, 0.5rem);
+}
+
+.flow--lg > * + * {
+  --flow-space: var(--space-lg, 2.5rem);
+}
+
+.flow--xl > * + * {
+  --flow-space: var(--space-xl, 4rem);
+}
+
+/* Flexbox helpers */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.gap-xs {
+  gap: var(--space-xs, 0.5rem);
+}
+
+.gap-sm {
+  gap: var(--space-sm, 1rem);
+}
+
+.gap-md {
+  gap: var(--space-md, 1.5rem);
+}
+
+.gap-lg {
+  gap: var(--space-lg, 2.5rem);
+}
+
+.gap-xl {
+  gap: var(--space-xl, 4rem);
+}
+
+/* Stack (vertical flex) */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap, var(--space-sm, 1rem));
+}
+
+/* Cluster (horizontal flex, wrapping) */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-gap, var(--space-sm, 1rem));
+  align-items: center;
+}
+
+/* Center */
+.center-content {
+  display: grid;
+  place-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   10. Sections & Regions
+   -------------------------------------------------------------------------- */
+.section {
+  padding-block: var(--section-space, var(--space-2xl, 6rem));
+}
+
+.section--sm {
+  --section-space: var(--space-xl, 4rem);
+}
+
+.section--lg {
+  --section-space: var(--space-3xl, 8rem);
+}
+
+/* Section header */
+.section__header {
+  margin-block-end: var(--space-lg, 2.5rem);
+}
+
+.section__title {
+  font-size: var(--fs-h2, clamp(1.75rem, 1.25rem + 2vw, 2.75rem));
+}
+
+.section__subtitle {
+  font-size: var(--fs-lead, clamp(1.1rem, 1rem + 0.5vw, 1.35rem));
+  color: var(--clr-text-muted, #555);
+  margin-block-start: var(--space-2xs, 0.25rem);
+}
+
+/* --------------------------------------------------------------------------
+   11. Horizontal Rules
+   -------------------------------------------------------------------------- */
+hr {
+  border: none;
+  border-block-start: 1px solid var(--clr-border, rgba(0, 0, 0, 0.08));
+  margin-block: var(--space-lg, 2.5rem);
+}
+
+/* --------------------------------------------------------------------------
+   12. Blockquote
+   -------------------------------------------------------------------------- */
+blockquote {
+  border-inline-start: 3px solid var(--clr-accent, #3B82F6);
+  padding-inline-start: var(--space-sm, 1rem);
+  padding-block: var(--space-2xs, 0.25rem);
+  color: var(--clr-text-muted, #555);
+  font-style: italic;
+}
+
+blockquote > p {
+  max-inline-size: none;
+}
+
+/* --------------------------------------------------------------------------
+   13. Details / Summary
+   -------------------------------------------------------------------------- */
+details {
+  border: 1px solid var(--clr-border, rgba(0, 0, 0, 0.08));
+  border-radius: var(--radius-md, 0.5rem);
+  padding-inline: var(--space-sm, 1rem);
+  padding-block: var(--space-xs, 0.5rem);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: var(--fw-semibold, 600);
+  padding-block: var(--space-2xs, 0.25rem);
+}
+
+details[open] summary {
+  margin-block-end: var(--space-xs, 0.5rem);
+}
+
+/* --------------------------------------------------------------------------
+   14. Utility Classes
+   -------------------------------------------------------------------------- */
+
+/* Screen-reader only */
+.sr-only,
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only:focus,
+.visually-hidden:focus {
+  position: static;
+  inline-size: auto;
+  block-size: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+}
+
+/* Text alignment (logical) */
+.text-start {
+  text-align: start;
+}
+
+.text-end {
+  text-align: end;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Font family */
+.ff-body {
+  font-family: var(--ff-body, 'Inter', system-ui, sans-serif);
+}
+
+.ff-heading {
+  font-family: var(--ff-heading, 'Fraunces', Georgia, serif);
+}
+
+.ff-mono {
+  font-family: var(--ff-mono, 'IBM Plex Mono', monospace);
+}
+
+/* Font weight */
+.fw-normal   { font-weight: var(--fw-normal, 400); }
+.fw-medium   { font-weight: var(--fw-medium, 500); }
+.fw-semibold { font-weight: var(--fw-semibold, 600); }
+.fw-bold     { font-weight: var(--fw-bold, 700); }
+
+/* Colors */
+.text-muted {
+  color: var(--clr-text-muted, #555);
+}
+
+.text-accent {
+  color: var(--clr-accent, #3B82F6);
+}
+
+/* Spacing utilities (margin/padding using logical properties) */
+.m-auto    { margin: auto; }
+.mi-auto   { margin-inline: auto; }
+.mbs-0     { margin-block-start: 0; }
+.mbe-0     { margin-block-end: 0; }
+
+.pi-sm     { padding-inline: var(--space-sm, 1rem); }
+.pi-md     { padding-inline: var(--space-md, 1.5rem); }
+.pb-sm     { padding-block: var(--space-sm, 1rem); }
+.pb-md     { padding-block: var(--space-md, 1.5rem); }
+
+/* Border radius */
+.rounded-sm  { border-radius: var(--radius-sm, 0.25rem); }
+.rounded-md  { border-radius: var(--radius-md, 0.5rem); }
+.rounded-lg  { border-radius: var(--radius-lg, 0.75rem); }
+.rounded-xl  { border-radius: var(--radius-xl, 1rem); }
+.rounded-full { border-radius: 9999px; }
+
+/* Display */
+.block        { display: block; }
+.inline-block { display: inline-block; }
+.inline       { display: inline; }
+.hidden       { display: none; }
+
+/* Position */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.sticky   { position: sticky; }
+
+/* Overflow */
+.overflow-hidden { overflow: hidden; }
+.overflow-auto   { overflow: auto; }
+
+/* Width */
+.w-full { inline-size: 100%; }
+
+/* Z-index scale */
+.z-10  { z-index: 10; }
+.z-20  { z-index: 20; }
+.z-50  { z-index: 50; }
+.z-100 { z-index: 100; }
+
+/* Thin border */
+.border {
+  border: 1px solid var(--clr-border, rgba(0, 0, 0, 0.08));
+}
+
+.border-block-end {
+  border-block-end: 1px solid var(--clr-border, rgba(0, 0, 0, 0.08));
+}
+
+/* Quiet shadow */
+.shadow-sm {
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.04));
+}
+
+.shadow-md {
+  box-shadow: var(--shadow-md, 0 2px 8px rgba(0, 0, 0, 0.06));
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg, 0 4px 16px rgba(0, 0, 0, 0.08));
+}
+
+/* Label / tag style */
+.label {
+  font-family: var(--ff-mono, 'IBM Plex Mono', monospace);
+  font-size: var(--fs-xs, 0.75rem);
+  font-weight: var(--fw-medium, 500);
+  letter-spacing: var(--ls-wide, 0.05em);
+  text-transform: uppercase;
+  color: var(--clr-text-muted, #555);
+}
+
+/* Accent line (decorative top-border) */
+.accent-line {
+  border-block-start: 3px solid var(--clr-accent, #3B82F6);
+}
+
+/* --------------------------------------------------------------------------
+   15. Transitions (opt-in)
+   -------------------------------------------------------------------------- */
+.transition {
+  transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+
+.transition-fast {
+  transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+  transition-duration: 120ms;
+  transition-timing-function: ease;
+}
+
+.transition-slow {
+  transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+  transition-duration: 400ms;
+  transition-timing-function: ease;
+}
+
+/* --------------------------------------------------------------------------
+   16. prefers-reduced-motion: reduce
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   17. Print Stylesheet
+   -------------------------------------------------------------------------- */
+@media print {
+  /* Basic resets for print */
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html {
+    font-size: 11pt;
+  }
+
+  body {
+    min-height: auto;
+    padding: 0;
+    line-height: 1.5;
+  }
+
+  /* Page settings */
+  @page {
+    margin: 1.5cm 2cm;
+    size: A4;
+  }
+
+  /* Hide non-essential elements */
+  nav,
+  .skip-link,
+  .hero-visual,
+  .theme-toggle,
+  .lang-toggle,
+  .back-to-top,
+  form,
+  footer,
+  [aria-hidden="true"],
+  [data-no-print] {
+    display: none !important;
+  }
+
+  /* Links */
+  a:not([class]) {
+    text-decoration: underline;
+    color: #000 !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    font-weight: normal;
+    color: #444 !important;
+  }
+
+  a[href^="#"]::after {
+    content: none;
+  }
+
+  /* Layout reset for print */
+  .container {
+    inline-size: 100%;
+    max-inline-size: none;
+    padding: 0;
+  }
+
+  .grid {
+    display: block;
+  }
+
+  .section {
+    padding-block: 1rem;
+    break-inside: avoid;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  h1 { font-size: 20pt; }
+  h2 { font-size: 16pt; }
+  h3 { font-size: 13pt; }
+  h4 { font-size: 11pt; }
+
+  /* Keep paragraphs, figures, images together */
+  p, figure, img, blockquote, pre {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Orphans and widows */
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Pre/code */
+  pre {
+    border: 1px solid #ccc !important;
+    padding: 0.5em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 9pt;
+  }
+
+  /* Images */
+  img {
+    max-inline-size: 100% !important;
+    break-inside: avoid;
+  }
+}

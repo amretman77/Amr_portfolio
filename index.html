@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#faf9f6">
+  <title>Your Name — Portfolio</title><!-- REPLACE: static title fallback, generated from data.js at runtime -->
+  <meta name="description" content="A personal portfolio for a data engineering student — projects, skills and experience."><!-- REPLACE: static description fallback -->
+  <meta name="author" content="Your Name"><!-- REPLACE: static author fallback -->
+  <link rel="canonical" href="https://YOUR-DOMAIN.example/"><!-- REPLACE: canonical URL -->
+
+  <!-- Open Graph / Twitter static fallbacks (overwritten from data.js) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Your Name — Portfolio">
+  <meta property="og:description" content="A personal portfolio for a data engineering student — projects, skills and experience.">
+  <meta property="og:url" content="https://YOUR-DOMAIN.example/">
+  <meta property="og:image" content="https://YOUR-DOMAIN.example/assets/og-image.png"><!-- REPLACE: OG image -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Your Name — Portfolio">
+  <meta name="twitter:description" content="A personal portfolio for a data engineering student — projects, skills and experience.">
+  <meta name="twitter:image" content="https://YOUR-DOMAIN.example/assets/og-image.png">
+
+  <script>
+    /* Apply the saved theme before first paint to avoid a flash. */
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme',
+          saved === 'light' || saved === 'dark' ? saved : (dark ? 'dark' : 'light'));
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="home" data-base="">
+  <a class="skip-link" id="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav" id="site-header"></header>
+
+  <main id="main">
+    <noscript>
+      <div class="container section">
+        <h1>Your Name</h1>
+        <p>This portfolio is rendered from a single data file with JavaScript. Please enable JavaScript to view the full experience, or use the contact details in the CV.</p>
+      </div>
+    </noscript>
+  </main>
+
+  <footer class="footer" id="site-footer"></footer>
+
+  <div id="modal-root"></div>
+  <div id="palette-root"></div>
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="data.js"></script>
+  <script src="js/data-loader.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/hero-visual.js"></script>
+</body>
+</html>

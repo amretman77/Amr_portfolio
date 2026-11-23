@@ -1,0 +1,316 @@
+/* ============================================================
+   Design Tokens — Portfolio
+   CSS custom properties only. No selectors beyond :root / [data-theme].
+   ============================================================ */
+
+:root {
+  /* ——— Fonts ——————————————————————————————————————————————— */
+  --font-heading: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* ——— Fluid Type Scale ——————————————————————————————————— */
+  --text-xs: clamp(0.6875rem, 0.625rem + 0.2vw, 0.75rem);
+  --text-sm: clamp(0.8125rem, 0.75rem + 0.25vw, 0.875rem);
+  --text-base: clamp(0.9375rem, 0.875rem + 0.25vw, 1rem);
+  --text-md: clamp(1.0625rem, 0.9375rem + 0.5vw, 1.1875rem);
+  --text-lg: clamp(1.1875rem, 1rem + 0.75vw, 1.375rem);
+  --text-h3: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+  --text-h2: clamp(1.5rem, 1.125rem + 1.5vw, 2rem);
+  --text-h1: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --text-display: clamp(2.5rem, 1.75rem + 3vw, 4rem);
+
+  /* ——— Line Heights ——————————————————————————————————————— */
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  /* ——— Letter Spacing —————————————————————————————————————— */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.08em;
+
+  /* ——— Font Weights ——————————————————————————————————————— */
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ——— Spacing Scale —————————————————————————————————————— */
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
+
+  /* ——— Section Padding ———————————————————————————————————— */
+  --section-padding: clamp(4rem, 10vw, 8rem);
+
+  /* ——— Layout ————————————————————————————————————————————— */
+  --grid-columns: 12;
+  --content-max-width: 70rem;
+  --content-padding-inline: clamp(1rem, 4vw, 2rem);
+
+  /* ——— Border Radius Scale ———————————————————————————————— */
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ——— Transitions ———————————————————————————————————————— */
+  --duration-instant: 75ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --duration-slower: 600ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-colors: color var(--duration-normal) var(--ease-default),
+    background-color var(--duration-normal) var(--ease-default),
+    border-color var(--duration-normal) var(--ease-default),
+    box-shadow var(--duration-normal) var(--ease-default);
+  --transition-transform: transform var(--duration-normal) var(--ease-default);
+  --transition-opacity: opacity var(--duration-normal) var(--ease-default);
+
+  /* ——— Z-Index Scale —————————————————————————————————————— */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-nav: 300;
+  --z-overlay: 400;
+  --z-modal: 500;
+  --z-toast: 600;
+  --z-palette: 700;
+  --z-tooltip: 800;
+  --z-max: 9999;
+
+  /* ——— Focus Ring ————————————————————————————————————————— */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+}
+
+/* ============================================================
+   Light Theme (default)
+   ============================================================ */
+:root,
+[data-theme="light"] {
+  --color-accent: #3B82F6;
+  --color-accent-hover: color-mix(in oklch, #3B82F6 85%, #000);
+  --color-accent-soft: color-mix(in oklch, #3B82F6 12%, #faf9f6);
+  --color-accent-subtle: color-mix(in oklch, #3B82F6 6%, #faf9f6);
+  --color-accent-contrast: #ffffff;
+
+  --color-bg: #faf9f6;
+  --color-bg-raised: #ffffff;
+  --color-bg-sunken: #f3f1ec;
+  --color-bg-overlay: rgba(250, 249, 246, 0.85);
+
+  --color-text: #1a1a1e;
+  --color-text-secondary: #52525b;
+  --color-text-tertiary: #8b8b96;
+  --color-text-inverse: #faf9f6;
+
+  --color-border: rgba(26, 26, 30, 0.1);
+  --color-border-strong: rgba(26, 26, 30, 0.2);
+  --color-border-subtle: rgba(26, 26, 30, 0.06);
+
+  --color-link: var(--color-accent);
+  --color-link-hover: var(--color-accent-hover);
+
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+
+  --shadow-xs: 0 1px 2px rgba(26, 26, 30, 0.04);
+  --shadow-sm: 0 1px 3px rgba(26, 26, 30, 0.06), 0 1px 2px rgba(26, 26, 30, 0.04);
+  --shadow-md: 0 4px 6px rgba(26, 26, 30, 0.05), 0 2px 4px rgba(26, 26, 30, 0.04);
+  --shadow-lg: 0 10px 15px rgba(26, 26, 30, 0.04), 0 4px 6px rgba(26, 26, 30, 0.03);
+  --shadow-xl: 0 20px 25px rgba(26, 26, 30, 0.05), 0 8px 10px rgba(26, 26, 30, 0.03);
+
+  --color-focus-ring: var(--color-accent);
+  --color-selection-bg: color-mix(in oklch, #3B82F6 20%, transparent);
+  --color-scrollbar-thumb: rgba(26, 26, 30, 0.15);
+  --color-scrollbar-track: transparent;
+
+  --color-code-bg: #f3f1ec;
+  --color-code-text: #1a1a1e;
+  --color-kbd-bg: #f3f1ec;
+  --color-kbd-border: rgba(26, 26, 30, 0.15);
+}
+
+/* ============================================================
+   Dark Theme
+   ============================================================ */
+[data-theme="dark"] {
+  --color-accent: #60A5FA;
+  --color-accent-hover: color-mix(in oklch, #60A5FA 85%, #fff);
+  --color-accent-soft: color-mix(in oklch, #60A5FA 12%, #0e0f11);
+  --color-accent-subtle: color-mix(in oklch, #60A5FA 6%, #0e0f11);
+  --color-accent-contrast: #0e0f11;
+
+  --color-bg: #0e0f11;
+  --color-bg-raised: #18191d;
+  --color-bg-sunken: #09090b;
+  --color-bg-overlay: rgba(14, 15, 17, 0.85);
+
+  --color-text: #ededef;
+  --color-text-secondary: #a1a1aa;
+  --color-text-tertiary: #6b6b76;
+  --color-text-inverse: #1a1a1e;
+
+  --color-border: rgba(237, 237, 239, 0.1);
+  --color-border-strong: rgba(237, 237, 239, 0.2);
+  --color-border-subtle: rgba(237, 237, 239, 0.06);
+
+  --color-link: var(--color-accent);
+  --color-link-hover: var(--color-accent-hover);
+
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.25), 0 8px 10px rgba(0, 0, 0, 0.15);
+
+  --color-focus-ring: var(--color-accent);
+  --color-selection-bg: color-mix(in oklch, #60A5FA 25%, transparent);
+  --color-scrollbar-thumb: rgba(237, 237, 239, 0.15);
+  --color-scrollbar-track: transparent;
+
+  --color-code-bg: #18191d;
+  --color-code-text: #ededef;
+  --color-kbd-bg: #18191d;
+  --color-kbd-border: rgba(237, 237, 239, 0.15);
+}
+
+/* ============================================================
+   Compatibility aliases
+   The stylesheets were authored against two slightly different
+   naming conventions (tokens + components). These aliases map the
+   legacy names onto the canonical tokens above so the whole site
+   themes correctly in light + dark mode.
+   ============================================================ */
+:root {
+  /* Numeric spacing scale used by components.css */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 2rem;
+  --space-8: 2.5rem;
+  --space-9: 3rem;
+  --space-10: 4rem;
+  --space-11: 5rem;
+  --space-12: 6rem;
+
+  /* Surface / text aliases */
+  --color-surface: var(--color-bg);
+  --color-surface-elevated: var(--color-bg-raised);
+  --color-surface-muted: var(--color-bg-sunken);
+  --color-surface-hover: var(--color-accent-subtle);
+  --color-surface-code: var(--color-code-bg);
+  --color-surface-blur: var(--color-bg-overlay);
+  --color-text-primary: var(--color-text);
+  --color-on-accent: var(--color-accent-contrast);
+  --color-border-hover: var(--color-border-strong);
+  --color-accent-light: color-mix(in oklch, var(--color-accent) 60%, #ffffff);
+
+  /* Misc layout aliases */
+  --content-max: var(--content-max-width);
+  --nav-height: 64px;
+  --z-drawer: 350;
+  --space-gutter: 2rem;
+
+  /* HSL channels for hsla() usage in components.css */
+  --accent-hsl: 217 91% 60%;
+  --surface-hsl: 40 33% 97%;
+
+  /* Legacy --clr-* / --ff-* / --fs-* names used by base.css */
+  --clr-accent: var(--color-accent);
+  --clr-accent-hover: var(--color-accent-hover);
+  --clr-accent-active: color-mix(in oklch, var(--color-accent) 80%, #000);
+  --clr-accent-subtle: color-mix(in oklch, var(--color-accent) 35%, transparent);
+  --clr-text: var(--color-text);
+  --clr-heading: var(--color-text);
+  --clr-text-muted: var(--color-text-secondary);
+  --clr-surface: var(--color-bg);
+  --clr-border: var(--color-border);
+  --clr-code-bg: var(--color-code-bg);
+  --clr-code-text: var(--color-code-text);
+  --clr-pre-bg: var(--color-code-bg);
+  --clr-pre-text: var(--color-code-text);
+  --clr-kbd-bg: var(--color-kbd-bg);
+  --clr-selection-bg: var(--color-selection-bg);
+  --clr-selection-text: inherit;
+
+  --ff-body: var(--font-body);
+  --ff-heading: var(--font-heading);
+  --ff-mono: var(--font-mono);
+
+  --fs-body: var(--text-base);
+  --fs-code: 0.875em;
+  --fs-lead: var(--text-md);
+  --fs-sm: var(--text-sm);
+  --fs-xs: var(--text-xs);
+  --fs-lg: var(--text-lg);
+  --fs-h1: var(--text-h1);
+  --fs-h2: var(--text-h2);
+  --fs-h3: var(--text-h3);
+  --fs-h4: var(--text-lg);
+  --fs-h5: var(--text-md);
+  --fs-h6: var(--text-sm);
+
+  --fw-normal: var(--weight-normal);
+  --fw-medium: var(--weight-medium);
+  --fw-semibold: var(--weight-semibold);
+  --fw-bold: var(--weight-bold);
+  --fw-black: var(--weight-bold);
+
+  --ls-tight: var(--tracking-tight);
+  --ls-snug: -0.015em;
+  --ls-wide: var(--tracking-wide);
+
+  --measure: 65ch;
+  --container-max: var(--content-max-width);
+
+  /* Additional text scale aliases used by components.css */
+  --text-xl: var(--text-lg);
+  --text-2xl: var(--text-h2);
+  --text-3xl: var(--text-h1);
+  --text-4xl: var(--text-display);
+  --text-5xl: clamp(3rem, 2rem + 4vw, 4.5rem);
+}
+
+[data-theme="light"] {
+  --accent-hsl: 217 91% 60%;
+  --surface-hsl: 40 33% 97%;
+}
+
+[data-theme="dark"] {
+  --accent-hsl: 213 94% 68%;
+  --surface-hsl: 222 9% 6%;
+}
+
+/* Make native form controls follow the selected theme, not just the OS. */
+[data-theme="light"] { color-scheme: light; }
+[data-theme="dark"]  { color-scheme: dark; }

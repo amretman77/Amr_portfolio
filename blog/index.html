@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#faf9f6">
+  <title>Writing — Your Name</title><!-- REPLACE: static title fallback -->
+  <meta name="description" content="Notes on data engineering, pipelines and analytics."><!-- REPLACE: static description fallback -->
+  <meta name="author" content="Your Name">
+  <link rel="canonical" href="https://YOUR-DOMAIN.example/blog/"><!-- REPLACE: canonical URL -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Writing — Your Name">
+  <meta property="og:description" content="Notes on data engineering, pipelines and analytics.">
+  <meta property="og:url" content="https://YOUR-DOMAIN.example/blog/">
+  <meta property="og:image" content="https://YOUR-DOMAIN.example/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>
+    /* Apply the saved theme before first paint to avoid a flash. */
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme',
+          saved === 'light' || saved === 'dark' ? saved : (dark ? 'dark' : 'light'));
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body data-page="blog" data-base="../">
+  <a class="skip-link" id="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="site-header"></header>
+
+  <main id="main">
+    <noscript>
+      <div class="container section">
+        <h1>Writing</h1>
+        <p>Please enable JavaScript to browse the blog archive.</p>
+      </div>
+    </noscript>
+  </main>
+
+  <footer class="footer" id="site-footer"></footer>
+
+  <div id="modal-root"></div>
+  <div id="palette-root"></div>
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="../data.js"></script>
+  <script src="../js/data-loader.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/render.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/hero-visual.js"></script>
+</body>
+</html>
